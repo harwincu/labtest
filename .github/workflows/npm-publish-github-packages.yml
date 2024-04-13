@@ -22,6 +22,6 @@ jobs:
       - run: npm install
       - run: npm run lint
       - run: npm install -g prettier
-      - run: npm run prettier --ignore-path ./src .
+      - run: npm run prettier --ignore-path /src/
       - run: CI=true npm run test
       - run: npm run build
