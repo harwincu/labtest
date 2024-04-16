@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: subnetapp
+  labels:
+    app: subnetapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: subnetapp
+  template:
+    metadata:
+      labels:
+        app: subnetapp
+    spec:
+      containers:
+      - name: subnetapp1
+        image: harwincu/nodejsapp:v1
+        ports:
+          - containerPort: 3000
