@@ -11,8 +11,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag harwicu/subnetapp:$(date +%s)
+      run: docker build . --file Dockerfile --tag harwicu/subnetappgit:v1
     - name: login registry
       run: docker login -u harwin6@hotmail.com -p "Tecnologia2024**"
     - name: push image
-      run: docker image push harwicu/subnetapp:$(date +%s)
+      run: docker image push harwicu/subnetappgit:v1
