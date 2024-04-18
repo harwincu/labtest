@@ -26,20 +26,20 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-    - name: Deploy to Azure Container Instances
-      uses: Azure/aci-deploy@v1
-      with:
+  #  - name: Deploy to Azure Container Instances
+   #   uses: Azure/aci-deploy@v1
+    #  with:
         # Name of the Resource Group in which the Container Instance will be created
-        resource-group: Lab_fullstack
+     #   resource-group: Lab_fullstack
         # The DNS Name Label for Container with Public IP
-        dns-name-label: subnetappfullstack
+      #  dns-name-label: subnetappfullstack
         # Specify the fully qualified container image name. For example, "myregistry.azurecr.io/nginx:latest" or "python:3.7.2-alpine/"
-        image: harwincu/subnetappgit:v4
+       # image: harwincu/subnetappgit:v4
        # Location where the Container will be deployed
-        location: East US
+       # location: East US
         # Name of the Container Group Instance
-        name: subnetappfullstack
-        ports: 3000
+        #name: subnetappfullstack
+        #ports: 3000
         # The OS type of the Containers. Accepted Values are  { Linux, Windows }
         # The container image registry login server
         #registry-login-server: # optional, default is 
@@ -48,3 +48,10 @@ jobs:
         # Password to log in Container Image Registry Server
         #registry-password: # optional, default is 
         # Restart Policy for the container(s). Accepted Values are { Always, OnFailure, Never }
+    - name: webapp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'subnetappfullstack'
+        images: 'harwincu/subnetappgit:v4'
+
+                
