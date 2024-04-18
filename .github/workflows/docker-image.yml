@@ -51,7 +51,8 @@ jobs:
     - name: webapp
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'subnetappfullstack'
+        app-name: 'fullstackharwin'
+        resource-group-name: 'Lab_fullstack'
         images: 'harwincu/subnetappgit:v4'
 
                 
