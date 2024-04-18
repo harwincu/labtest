@@ -38,7 +38,7 @@ jobs:
        # Location where the Container will be deployed
         location: East US
         # Name of the Container Group Instance
-        name: harwincu/subnetappgit
+        name: subnetappfullstack
         # The OS type of the Containers. Accepted Values are  { Linux, Windows }
         # The container image registry login server
         #registry-login-server: # optional, default is 
