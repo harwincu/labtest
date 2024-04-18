@@ -11,8 +11,38 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag harwincu/subnetappgit:v1
+      run: docker build . --file Dockerfile --tag harwincu/subnetappgit:v2
     - name: login registry
       run: docker login -u harwin6@hotmail.com -p "Tecnologia2024**"
     - name: push image
-      run: docker image push harwincu/subnetappgit:v1
+      run: docker image push harwincu/subnetappgit:v2
+
+    - name: 'Az CLI login'
+      uses: azure/login@v1
+      with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+    - name: Deploy to Azure Container Instances
+      uses: Azure/aci-deploy@v1
+      with:
+        # Name of the Resource Group in which the Container Instance will be created
+        resource-group: Lab_fullstack
+        # The DNS Name Label for Container with Public IP
+        dns-name-label: subnetappfullstack
+        # Specify the fully qualified container image name. For example, "myregistry.azurecr.io/nginx:latest" or "python:3.7.2-alpine/"
+        image: harwincu/subnetappgit:v2
+       # Location where the Container will be deployed
+        location: East US
+        # Name of the Container Group Instance
+        name: harwincu/subnetappgit
+        # The OS type of the Containers. Accepted Values are  { Linux, Windows }
+        # The container image registry login server
+        #registry-login-server: # optional, default is 
+        # Username to log in Container Image Registry Server
+        #registry-username: # optional, default is 
+        # Password to log in Container Image Registry Server
+        #registry-password: # optional, default is 
+        # Restart Policy for the container(s). Accepted Values are { Always, OnFailure, Never }
+              
