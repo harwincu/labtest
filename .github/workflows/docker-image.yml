@@ -13,11 +13,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag harwincu/subnetappgit:v2
+      run: docker build . --file Dockerfile --tag harwincu/subnetappgit:v3
     - name: login registry
       run: docker login -u harwin6@hotmail.com -p "Tecnologia2024**"
     - name: push image
-      run: docker image push harwincu/subnetappgit:v2
+      run: docker image push harwincu/subnetappgit:v3
 
     - name: 'Az CLI login'
       uses: azure/login@v1
@@ -34,7 +34,7 @@ jobs:
         # The DNS Name Label for Container with Public IP
         dns-name-label: subnetappfullstack
         # Specify the fully qualified container image name. For example, "myregistry.azurecr.io/nginx:latest" or "python:3.7.2-alpine/"
-        image: harwincu/subnetappgit:v2
+        image: harwincu/subnetappgit:v3
        # Location where the Container will be deployed
         location: East US
         # Name of the Container Group Instance
